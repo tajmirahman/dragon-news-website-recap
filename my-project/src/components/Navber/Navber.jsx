@@ -4,7 +4,7 @@ import userProfile from '../../assets/user.png'
 
 const Navber = () => {
     return (
-        <div className='flex justify-between items-center mt-3'>
+        <div className='flex justify-between items-center mt-3 p-3'>
 
             <div></div>
 

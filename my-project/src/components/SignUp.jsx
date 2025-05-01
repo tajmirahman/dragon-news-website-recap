@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { authContext } from './AuthProvider/AuthProvider';
 
 const SignUp = () => {
+
+
+    const name=useContext(authContext);
+    console.log(name)
+
     return (
-        <div className="hero bg-base-200 min-h-screen">
-            <div className="hero-content flex-col bg-gray-400 md:w-[700px]  mx-auto">
+        <div className="hero bg-gray-400 ">
+            <div className="hero-content flex-col">
                 <h2 className='text-3xl font-semibold'>Sign Up Form</h2>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
 

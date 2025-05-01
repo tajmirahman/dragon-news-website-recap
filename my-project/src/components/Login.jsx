@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div className="hero  min-h-screen">
-            <div className="hero-content flex-col bg-gray-400 md:w-[700px] md:h-[400px] mx-auto ">
+        <div className="hero ">
+            <div className="hero-content flex-col bg-gray-400 ">
                 <h2 className='text-3xl font-semibold'>Login Form</h2>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2x">
+                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2x mb-10">
 
-                    <form className="card-body">
+                    <form className="card-body ">
                         
                         <div className="form-control">
                             <label className="label">

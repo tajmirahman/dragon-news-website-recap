@@ -35,6 +35,10 @@ const routes=createBrowserRouter([
             {
                 path:'/auth/login',
                 element:<Login></Login>
+            },
+            {
+                path:'/auth/register',
+                element:<SignUp></SignUp>
             }
         ]
     },
