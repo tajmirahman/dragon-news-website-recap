@@ -19,7 +19,7 @@ const Navber = () => {
                     <img src={userProfile} alt="" />
                 </div>
                 <div>
-                    <Link to={'/login'}><button className='btn btn-neutral'>Login</button></Link>
+                    <Link to={'/auth/login'}><button className='btn btn-neutral'>Login</button></Link>
                 </div>
             </div>
 

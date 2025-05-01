@@ -28,7 +28,7 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Submit</button>
                         </div>
-                        <p className='text-center'>if you are not registered? please <span className='text-orange-400'><Link to={'/register'}>register</Link></span></p>
+                        <p className='text-center'>if you are not registered? please <span className='text-orange-400'><Link to={'/auth/register'}>register</Link></span></p>
                     </form>
                 </div>
             </div>

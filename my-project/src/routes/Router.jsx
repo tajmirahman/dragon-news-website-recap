@@ -5,6 +5,7 @@ import News from "../pages/News";
 import CategoryNews from "../pages/CategoryNews";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
+import AuthLayout from "../components/AuthLayout/AuthLayout";
 
 const routes=createBrowserRouter([
     {
@@ -22,22 +23,22 @@ const routes=createBrowserRouter([
             }
         ]
     },
+   
     {
         path:'/news',
         element:<News></News>
     },
     {
         path:'/auth',
-        element: <h1>auth layout</h1>
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path:'/auth/login',
+                element:<Login></Login>
+            }
+        ]
     },
-    {
-        path:'/login',
-        element: <Login></Login>
-    },
-    {
-        path:'/register',
-        element: <SignUp></SignUp>
-    },
+    
     {
         path:'*',
         element: <h1>error</h1>
