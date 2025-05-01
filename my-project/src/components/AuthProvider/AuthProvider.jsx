@@ -1,15 +1,60 @@
-import { info } from 'autoprefixer';
-import React, { createContext } from 'react';
+
+
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import React, { createContext, useEffect, useState } from 'react';
+import auth from '../../firebase.init';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const authContext=createContext(null)
 
 const AuthProvider = ({children}) => {
 
-    const name= 'utsob';
+    const [user,setUser]=useState(null);
+
+    const googleProvider=new GoogleAuthProvider();
+
+    const handleSignup=(email,password)=>{
+        return createUserWithEmailAndPassword(auth,email,password);
+    }
+
+    const handleLogin=(email,password)=>{
+        return signInWithEmailAndPassword(auth,email,password);
+    }
+
+    const handleGoogelLogin=()=>{
+        return signInWithPopup(auth, googleProvider)
+    }
+
+    const handleLogout=()=>{
+        return signOut(auth)
+    }
+
+
+    useEffect(()=>{
+       const unsubscribe= onAuthStateChanged(auth, (currentUser)=>{
+        //    setUser(currentUser);
+           console.log(currentUser);
+            if(currentUser){
+                setUser(currentUser)
+            }
+            else{
+                setUser(null)
+            }
+        })
+        return ()=>{
+            unsubscribe();
+        }
+    },[user])
+
+    // console.log(user);
 
     const info={
-        name
+        handleSignup,
+        handleLogin,
+        handleLogout,
+        handleGoogelLogin,
+        user,
+        setUser
     }
 
     return (
