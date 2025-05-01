@@ -10,7 +10,6 @@ const CategoryNews = () => {
 
     return (
         <div>
-            <h1>category news page</h1>
 
             <div>
                 {

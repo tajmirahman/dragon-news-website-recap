@@ -3,6 +3,8 @@ import MainLayOut from "../components/MainLayOut";
 import Home from "../components/Home";
 import News from "../pages/News";
 import CategoryNews from "../pages/CategoryNews";
+import Login from "../components/Login";
+import SignUp from "../components/SignUp";
 
 const routes=createBrowserRouter([
     {
@@ -27,6 +29,14 @@ const routes=createBrowserRouter([
     {
         path:'/auth',
         element: <h1>auth layout</h1>
+    },
+    {
+        path:'/login',
+        element: <Login></Login>
+    },
+    {
+        path:'/register',
+        element: <SignUp></SignUp>
     },
     {
         path:'*',
