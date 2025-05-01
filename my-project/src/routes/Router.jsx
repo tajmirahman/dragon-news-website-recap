@@ -11,6 +11,10 @@ const routes=createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>
+            },
+            {
+                path:'/category/:id',
+                element: <h2>This category news</h2>
             }
         ]
     },

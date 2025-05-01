@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {  NavLink } from 'react-router-dom';
 
 const LeftSide = () => {
 
@@ -16,7 +17,7 @@ const LeftSide = () => {
             <h1>All category</h1>
             <div className='flex flex-col gap-2'>
                 {
-                    category.map(cat => <button className='btn'>{cat.category_name}</button>
+                    category.map(cat => <NavLink to={`/category/${cat.category_id}`} className='btn'>{cat.category_name}</NavLink>
                     )
                 }
             </div>
