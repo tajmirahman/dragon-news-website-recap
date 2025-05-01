@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header/Header';
 import NewsLetter from './Header/NewsLetter';
 import Navber from './Navber/Navber';
+import LeftSide from './component-layout/LeftSide';
+import RightSide from './component-layout/RightSide';
 
 
 const MainLayOut = () => {
@@ -21,9 +23,13 @@ const MainLayOut = () => {
             {/* Navber section end  */}
 
             <main className='grid md:grid-cols-12 '>
-                <aside className='col-span-3'>left side</aside>
+                <aside className='col-span-3'>
+                    <LeftSide></LeftSide>
+                </aside>
                 <section className='col-span-6'>main content</section>
-                <aside className='col-span-3'>right side</aside>
+                <aside className='col-span-3'>
+                    <RightSide></RightSide>
+                </aside>
             </main>
 
         </div>
