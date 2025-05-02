@@ -1,19 +1,24 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from './AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const {handleLogin}=useContext(authContext)
+    const {handleLogin }=useContext(authContext);
+    const [error, setError]=useState('');
+    const navigate= useNavigate();
 
     const handleForm=(e)=>{
+       
         e.preventDefault();
         const email= e.target.email.value;
         const password= e.target.password.value;
 
         handleLogin(email,password)
-        // .then(res=>console.log(res))
-        // .catch(err=>console.log(err))
+        .then(()=>{
+            navigate('/');
+        })
+        .catch(err=>setError(err.message))
     }
 
     return (
@@ -38,6 +43,11 @@ const Login = () => {
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
+                        </div>
+                        <div>
+                            {
+                                error && <p className='text-red-500'>{error.split('/')[1].slice(0,18)}</p>
+                            }
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Submit</button>

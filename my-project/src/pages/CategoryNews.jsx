@@ -13,7 +13,7 @@ const CategoryNews = () => {
 
             <div>
                 {
-                  news.map(data => <NewsCard data={data}></NewsCard>)  
+                  news.map((data,index) => <NewsCard key={data.index} data={data} index={index}></NewsCard>)  
                 }
             </div>
         </div>

@@ -6,45 +6,55 @@ import CategoryNews from "../pages/CategoryNews";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import AuthLayout from "../components/AuthLayout/AuthLayout";
+import NewsDetails from "../pages/NewsDetails";
 
-const routes=createBrowserRouter([
+const routes = createBrowserRouter([
     {
-        path:'/',
-        element:<MainLayOut />,
-        children:[
+        path: '/',
+        element: <MainLayOut />,
+        children: [
             {
-                path:'/',
+                path: '/',
                 element: <Navigate to={'/category/01'}></Navigate>
             },
             {
-                path:'/category/:id',
+                path: '/category/:id',
                 element: <CategoryNews />,
-                loader: ({params})=> fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
             }
         ]
     },
-   
     {
-        path:'/news',
-        element:<News></News>
+        path: '/details/:id',
+        element: <NewsDetails />,
+        loader: ({ params }) => {
+            console.log("Loader params:", params);
+            return fetch(`https://openapi.programming-hero.com/api/news/${params.id}`);
+          }
+          
+    },
+
+    {
+        path: '/news',
+        element: <News></News>
     },
     {
-        path:'/auth',
+        path: '/auth',
         element: <AuthLayout></AuthLayout>,
         children: [
             {
-                path:'/auth/login',
-                element:<Login></Login>
+                path: '/auth/login',
+                element: <Login></Login>
             },
             {
-                path:'/auth/register',
-                element:<SignUp></SignUp>
+                path: '/auth/register',
+                element: <SignUp></SignUp>
             }
         ]
     },
-    
+
     {
-        path:'*',
+        path: '*',
         element: <h1>error</h1>
     }
 ])
