@@ -21,13 +21,13 @@ const SignUp = () => {
         }
 
         if (password != conPassword) {
-            alert('Password does not match!')
+            setError('Password does not match!')
         }
 
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
 
         if (!regex.test(password)) {
-            alert('Password should be contained upercase,lowercase and speciall character and at least 6 character!')
+            setError('Password should be contained upercase,lowercase and speciall character and at least 6 character!')
         }
 
         handleSignup(email, password)
@@ -79,6 +79,11 @@ const SignUp = () => {
 
                             <input type="password" name='conPassword' placeholder="confirm password" className="input input-bordered text-center" required />
 
+                        </div>
+                        <div>
+                            {
+                                error && <p className='text-red-400'>{error}</p>
+                            }
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Submit</button>

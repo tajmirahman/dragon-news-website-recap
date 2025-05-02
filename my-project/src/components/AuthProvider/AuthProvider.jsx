@@ -24,15 +24,8 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    const userUpdateProfile=async(name,image)=>{
-        try{
-            await updateProfile(auth.currentUser,{
-                displayName: name, photoURL:image,
-            })
-            console.log('profile update')
-        }catch(error){
-            console.error('error form update profiel', error)
-        }
+    const userUpdateProfile=(updateData)=>{
+        return updateProfile(auth.currentUser, updateData);
     }
 
     const handleLogout=()=>{
@@ -42,9 +35,8 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
        const unsubscribe= onAuthStateChanged(auth, (currentUser)=>{
-        //    setUser(currentUser);
-           console.log(currentUser);
-            if(currentUser){
+         
+            if(user){
                 setUser(currentUser)
             }
             else{
@@ -56,7 +48,7 @@ const AuthProvider = ({children}) => {
         }
     },[user])
 
-    // console.log(user);
+    console.log(user);
 
     const info={
         handleSignup,
