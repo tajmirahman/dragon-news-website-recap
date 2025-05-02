@@ -1,30 +1,53 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from './AuthProvider/AuthProvider';
 
 const SignUp = () => {
-    const {handleSignup,userUpdateProfile}=useContext(authContext);
-    const navigate=useNavigate();
+    const { handleSignup, userUpdateProfile, user, setUser } = useContext(authContext);
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
 
 
-    const handleForm=(e)=>{
+    const handleForm = (e) => {
         e.preventDefault();
-        const name=e.target.name.value;
-        const image=e.target.photo.value;
-        const email=e.target.email.value;
-        const password=e.target.password.value;
+        const name = e.target.name.value;
+        const image = e.target.photo.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const conPassword = e.target.conPassword.value;
 
-        handleSignup(email,password)
-        .then(()=>{
-            
-            userUpdateProfile({displayName: name, photoURL:image,})
-            .then(()=>{
-                navigate('/')
+        if (name.length < 4) {
+            setError('Name length at least 4 character!')
+        }
+
+        if (password != conPassword) {
+            alert('Password does not match!')
+        }
+
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
+
+        if (!regex.test(password)) {
+            alert('Password should be contained upercase,lowercase and speciall character and at least 6 character!')
+        }
+
+        handleSignup(email, password)
+            .then((result) => {
+      
+                const user = result.user;
+                setUser(user)
+                userUpdateProfile({ displayName: name, photoURL: image, })
+
             })
-            .catch(err=>console.log(err))
-        })
-        .catch(err=>console.log(err))
+            .catch(err => console.log(err))
     }
+
+    useEffect(() => {
+        if (user) {
+
+            navigate("/")
+
+        }
+    }, [navigate, user])
 
 
 
@@ -36,26 +59,26 @@ const SignUp = () => {
 
                     <form onSubmit={handleForm} className="card-body">
                         <div className="form-control">
-                            
+
                             <input type="text" name='name' placeholder="your name" className="input input-bordered text-center" required />
                         </div>
                         <div className="form-control">
-                          
+
                             <input type="text" name='photo' placeholder="your photo url" className="input input-bordered text-center" required />
                         </div>
                         <div className="form-control">
-                         
+
                             <input type="email" name='email' placeholder="your email" className="input input-bordered text-center" required />
                         </div>
                         <div className="form-control">
-                           
+
                             <input type="password" name='password' placeholder="password" className="input input-bordered text-center" required />
-                            
+
                         </div>
                         <div className="form-control">
-                         
+
                             <input type="password" name='conPassword' placeholder="confirm password" className="input input-bordered text-center" required />
-                            
+
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Submit</button>

@@ -1,7 +1,7 @@
 import { FaStar, FaEye } from 'react-icons/fa';
 
 const NewsCard = ({data:news}) => {
-    console.log(news);
+    // console.log(news);
 
 
   return (

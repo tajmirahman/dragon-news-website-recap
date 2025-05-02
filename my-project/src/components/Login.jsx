@@ -12,8 +12,8 @@ const Login = () => {
         const password= e.target.password.value;
 
         handleLogin(email,password)
-        .then(res=>console.log(res))
-        .catch(err=>console.log(err))
+        // .then(res=>console.log(res))
+        // .catch(err=>console.log(err))
     }
 
     return (

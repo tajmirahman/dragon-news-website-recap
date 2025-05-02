@@ -1,5 +1,4 @@
 
-
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import auth from '../../firebase.init';
@@ -25,10 +24,15 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    const userUpdateProfile=(name,image)=>{
-        return updateProfile(auth.currentUser,{
-            displayName: name, photoURL:image,
-        })
+    const userUpdateProfile=async(name,image)=>{
+        try{
+            await updateProfile(auth.currentUser,{
+                displayName: name, photoURL:image,
+            })
+            console.log('profile update')
+        }catch(error){
+            console.error('error form update profiel', error)
+        }
     }
 
     const handleLogout=()=>{
