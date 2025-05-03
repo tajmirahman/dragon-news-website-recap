@@ -4,9 +4,12 @@ import { authContext } from './AuthProvider/AuthProvider';
 
 const PrivateRoute = ({children}) => {
 
-    const {user}=useContext(authContext)
+    const {user, loading}=useContext(authContext)
     const location=useLocation();
   
+    if(loading){
+        return <h2>...</h2>
+    }
 
     if(user && user?.email){
         return children

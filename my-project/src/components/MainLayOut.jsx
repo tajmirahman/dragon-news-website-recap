@@ -22,7 +22,7 @@ const MainLayOut = () => {
             <Navber></Navber>
             {/* Navber section end  */}
 
-            <main className='grid md:grid-cols-12 '>
+            <main className='grid grid-cols-1 md:grid-cols-12 '>
                 <aside className='col-span-3'>
                     <LeftSide></LeftSide>
                 </aside>

@@ -28,8 +28,8 @@ const NewsDetails = () => {
             <div className=' w-11/12 mx-auto grid md:grid-cols-12 gap-3 mt-6'>
                 <section className='col-span-9'>
                     <div className='flex flex-col items-center space-y-3'>
-                        <figure className='w-[800px] h-full'>
-                        <img className='w-[800px] h-full ' src={news?.image_url} alt="" />
+                        <figure className='md:w-[800px] md:h-full'>
+                        <img className='md:w-[800px] md:h-full ' src={news?.image_url} alt="" />
                         </figure>
                         <h1 className='text-xl font-bold'>{news?.title}</h1>
                         <p>{news?.details}</p>

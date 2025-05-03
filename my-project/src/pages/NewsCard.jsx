@@ -6,7 +6,7 @@ const NewsCard = ({ data: news }) => {
 
 
   return (
-    <div className="card bg-base-100 shadow-md rounded-2xl overflow-hidden w-11/12 mx-auto my-1">
+    <div className="card bg-base-100 shadow-md rounded-2xl overflow-hidden md:w-11/12 mx-auto my-1">
       {/* Author Section */}
       <div className="flex items-center gap-4 p-4">
         <img

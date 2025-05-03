@@ -54,6 +54,20 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    {
+        path:'/profile',
+        element:<PrivateRoute>
+            <h2>profile page</h2>
+        </PrivateRoute>
+    },
+    {
+        path:'/carrer',
+        element: <h2>Carrer Page</h2>
+    },
+    {
+        path:'/about',
+        element: <h2>about page</h2>
+    },
 
     {
         path: '*',

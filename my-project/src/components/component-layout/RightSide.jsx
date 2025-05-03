@@ -12,7 +12,7 @@ const RightSide = () => {
             <div>
                 <div >
                     <h2 className='font-semibold'>Login With</h2>
-                    <div className='space-y-2 mt-2'>
+                    <div className='flex flex-col gap-2  mt-2'>
                         <button className='btn'><FaGoogle />Login With Google</button>
                         <button className='btn'><FaGithub />Login With Github</button>
                     </div>
