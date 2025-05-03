@@ -28,7 +28,6 @@ const routes = createBrowserRouter([
         path: '/details/:id',
         element: <NewsDetails />,
         loader: ({ params }) => {
-            console.log("Loader params:", params);
             return fetch(`https://openapi.programming-hero.com/api/news/${params.id}`);
           }
           

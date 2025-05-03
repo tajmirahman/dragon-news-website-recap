@@ -1,21 +1,18 @@
 import React from 'react';
 import Header from '../components/Header/Header';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+
 
 const NewsDetails = () => {
 
-    const data = useLoaderData();
+    const data=useLoaderData();
 
-    if (!data || data.status === false) {
-        return <div>No news found for this ID.</div>;
-      }
+    const news=data.data[0];
 
-      const news = data?.data?.[0];
 
-if (!news) {
-  return <div>News item not found or API error.</div>;
-}
 
+
+  
 
     return (
         <div>
@@ -23,8 +20,13 @@ if (!news) {
                 <Header></Header>
             </header>
 
-            <h2>{news.title}</h2>
-            <p>{news.details}</p>
+            <div>
+                <img src={news.image_url} alt="" />
+                <h1>{news.title}</h1>
+                <p>{news.details}</p>
+                <Link to={'/'}><button className='btn'>Back To Category</button></Link>
+            </div>
+
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import { FaStar, FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const NewsCard = ({ data: news, index }) => {
+const NewsCard = ({ data: news }) => {
   // console.log(news);
 
 
@@ -39,7 +39,7 @@ const NewsCard = ({ data: news, index }) => {
           {news.details.slice(0, 200)} ...
         </p>
         <div className="mt-4 flex justify-between items-center">
-          <Link to={`/details/${index}`}><button className="link link-primary text-sm font-medium">Read More...</button></Link>
+          <Link to={`/details/${news._id}`}><button className="link link-primary text-sm font-medium">Read More...</button></Link>
           <div className="flex items-center gap-4 text-sm text-gray-600">
             <span className="flex items-center gap-1">
               <FaStar className="text-yellow-400" /> {news.rating.number}
