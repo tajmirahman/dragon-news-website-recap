@@ -25,7 +25,7 @@ const Navber = () => {
                 <div>
                     {
                         user && user.email ? (
-                            <button onClick={handleLogout} className="btn">Logout</button>
+                            <button  className="btn">Logout</button>
                           ) : (
                             <Link to="/auth/login">
                               <button className="btn btn-neutral">Login</button>

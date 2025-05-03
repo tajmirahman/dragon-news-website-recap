@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from './AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const {handleLogin }=useContext(authContext);
+    const {handleLogin,setUser }=useContext(authContext);
     const [error, setError]=useState('');
     const navigate= useNavigate();
+    const location =useLocation()
 
     const handleForm=(e)=>{
        
@@ -15,8 +16,9 @@ const Login = () => {
         const password= e.target.password.value;
 
         handleLogin(email,password)
-        .then(()=>{
-            navigate('/');
+        .then((res)=>{
+            setUser(res.user);
+            navigate(location?.state ? location.state : '/');
         })
         .catch(err=>setError(err.message))
     }

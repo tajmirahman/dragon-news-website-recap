@@ -21,13 +21,15 @@ const NewsDetails = () => {
                 <Header></Header>
             </header>
 
-            <div className=' w-11/12 mx-auto grid md:grid-cols-12 gap-3'>
+            <div className=' w-11/12 mx-auto grid md:grid-cols-12 gap-3 mt-6'>
                 <section className='col-span-9'>
-                    <div className='text-center space-y-2'>
-                        <img className='w-[1000px] h-full' src={news?.image_url} alt="" />
+                    <div className='flex flex-col items-center space-y-3'>
+                        <figure className='w-[800px] h-full'>
+                        <img className='w-[800px] h-full ' src={news?.image_url} alt="" />
+                        </figure>
                         <h1 className='text-xl font-bold'>{news?.title}</h1>
                         <p>{news?.details}</p>
-                        <Link to={'/'}><button className='btn btn-primary mt-2'>Back To Category</button></Link>
+                        <Link to={'/'}><button className='btn btn-primary'>Back To Category</button></Link>
                     </div>
                 </section>
                 <aside className='col-span-3'>

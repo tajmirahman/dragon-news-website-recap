@@ -7,6 +7,7 @@ import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import AuthLayout from "../components/AuthLayout/AuthLayout";
 import NewsDetails from "../pages/NewsDetails";
+import PrivateRoute from "../components/PrivateRoute";
 
 const routes = createBrowserRouter([
     {
@@ -26,7 +27,9 @@ const routes = createBrowserRouter([
     },
     {
         path: '/details/:id',
-        element: <NewsDetails />,
+        element: <PrivateRoute>
+            <NewsDetails />
+        </PrivateRoute>,
         loader: ({ params }) => {
             return fetch(`https://openapi.programming-hero.com/api/news/${params.id}`);
           }

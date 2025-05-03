@@ -18,16 +18,19 @@ const SignUp = () => {
 
         if (name.length < 4) {
             setError('Name length at least 4 character!')
+            return
         }
 
         if (password != conPassword) {
             setError('Password does not match!')
+            return
         }
 
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
 
         if (!regex.test(password)) {
             setError('Password should be contained upercase,lowercase and speciall character and at least 6 character!')
+            return
         }
 
         handleSignup(email, password)
