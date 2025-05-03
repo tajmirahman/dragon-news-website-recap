@@ -6,9 +6,10 @@ const PrivateRoute = ({children}) => {
 
     const {user}=useContext(authContext)
     const location=useLocation();
+  
 
     if(user && user?.email){
-        return {children}
+        return children
     }
 
     return (

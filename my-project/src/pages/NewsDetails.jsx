@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../components/Header/Header';
 import { Link, useLoaderData } from 'react-router-dom';
 import RightSide from '../components/component-layout/RightSide';
+import { authContext } from '../components/AuthProvider/AuthProvider';
 
 
 const NewsDetails = () => {
+
+    const {loading}=useContext(authContext);
 
     const data = useLoaderData();
 
     const news = data.data[0];
 
+    if(loading){
+        return <h1>Loading...</h1>
+    }
 
-
-
-
+   
 
     return (
         <div>
