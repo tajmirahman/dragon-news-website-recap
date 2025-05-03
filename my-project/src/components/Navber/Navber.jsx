@@ -5,7 +5,7 @@ import { authContext } from '../AuthProvider/AuthProvider';
 
 const Navber = () => {
     const { handleLogout, user } = useContext(authContext);
-    
+
 
     return (
         <div className='flex justify-between items-center mt-3 '>
@@ -17,25 +17,33 @@ const Navber = () => {
                 <Link to={'/carrer'}>Carrer</Link>
                 <Link to={'/about'}>About</Link>
                 {
-                    user && 
+                    user &&
                     <Link to={'/profile'}>Profile</Link>
-                    
+
                 }
             </div>
 
             <div className='flex justify-center items-center gap-1'>
                 <div >
-                    <img className='w-15 h-15 rounded-full p-1' src={userProfile} alt="" />
+                    {
+                        user && user?.email ?
+                            <div className='flex justify-center items-center gap-2'>
+                                <img className='w-10 h-10 rounded-full' src={userProfile} alt="" />
+                                <p className='font-bold'>{user.displayName}</p>
+                            </div>
+                            :
+                            ''
+                    }
                 </div>
                 <div>
                     {
                         user && user.email ? (
-                            <button onClick={handleLogout}  className="btn">Logout</button>
-                          ) : (
+                            <button onClick={handleLogout} className="btn">Logout</button>
+                        ) : (
                             <Link to="/auth/login">
-                              <button className="btn btn-neutral">Login</button>
+                                <button className="btn btn-neutral">Login</button>
                             </Link>
-                          )
+                        )
                     }
                     {/* <button onClick={handleLogout} className='btn'>Logout</button> */}
                 </div>

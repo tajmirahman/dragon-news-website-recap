@@ -41,7 +41,7 @@ const SignUp = () => {
                 userUpdateProfile({ displayName: name, photoURL: image, })
 
             })
-            .catch(err => console.log(err))
+            .catch(err => setError(err.message))
     }
 
     useEffect(() => {

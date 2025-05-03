@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import swimming from '../../assets/swimming.png';
 import playGround from '../../assets/playground.png';
 import claSs from '../../assets/class.png';
+import { authContext } from '../AuthProvider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const RightSide = () => {
+    const {handleGoogelLogin}=useContext(authContext);
+    const navigate=useNavigate();
+    const location=useLocation();
+    const form=location.state?.from?.pathname || '/';
+
+    const handleGoogle=()=>{
+        handleGoogelLogin()
+        .then(()=>{
+            navigate(form)
+        })
+  
+    }
+
     return (
         <>
             <div>
                 <div >
                     <h2 className='font-semibold'>Login With</h2>
                     <div className='flex flex-col gap-2  mt-2'>
-                        <button className='btn'><FaGoogle />Login With Google</button>
+                        <button onClick={handleGoogle} className='btn'><FaGoogle />Login With Google</button>
                         <button className='btn'><FaGithub />Login With Github</button>
                     </div>
                 </div>

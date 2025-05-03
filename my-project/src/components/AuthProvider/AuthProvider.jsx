@@ -47,7 +47,7 @@ const AuthProvider = ({children}) => {
         }
     },[user])
 
-    console.log(user);
+    // console.log(user);
 
     const info={
         handleSignup,
